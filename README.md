@@ -1,6 +1,6 @@
 # Sentinel Secrets
 
-Context-aware secret and risk scanner for fast CI and explainable findings.
+Context-aware GitHub Action for detecting leaked secrets and credential risks with low false positives.
 
 ## Why this exists
 Sentinel Secrets keeps pull requests free of high-impact secrets without slowing down CI or drowning reviewers in noise.
@@ -13,10 +13,6 @@ It focuses on secrets that:
 - Provide direct access to infrastructure, cloud resources, or third-party services
 - Are likely to be exploitable if leaked
 - Are introduced into version control by mistake
-
-
-Why this matters:
-You are telling reviewers you understand risk, not just strings.
 
 ## Features
 
