@@ -39,3 +39,39 @@ A secret is reported only when there is high confidence that:
 3. Exposure would have real-world impact
 
 When confidence is low, Sentinel Secrets prefers silence.
+
+## How it works
+
+Sentinel Secrets uses a layered detection pipeline to maximize confidence while minimizing noise.
+
+### 1. Candidate Extraction
+Only newly introduced or modified lines in pull requests are analyzed.
+This reduces scan time and avoids legacy noise.
+
+### 2. Secret Likelihood Analysis
+Candidate values are evaluated using:
+- Known credential patterns
+- Entropy scoring
+- Length and character distribution checks
+
+Only high-likelihood candidates proceed further.
+
+### 3. Context Validation
+Candidates are analyzed in their usage context using AST inspection.
+Secrets are reported only when they are used in security-relevant operations
+such as authentication, authorization, or infrastructure access.
+
+### Security-relevant contexts include:
+- Assignment to environment variables
+- Use in SDK or client authentication
+- Inclusion in HTTP authorization headers
+- Usage in infrastructure or CI configuration
+
+### Confidence scoring
+Each finding is assigned a confidence score based on:
+- Secret type certainty
+- Entropy and structure
+- Usage context
+- Exposure surface
+
+Findings below the confidence threshold are not reported.
