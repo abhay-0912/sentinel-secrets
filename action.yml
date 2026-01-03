@@ -1,0 +1,11 @@
+name: Sentinel Secrets
+description: Context-aware secret and risk scanner for GitHub pull requests
+author: Abhay Srivastava
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run Sentinel Secrets scanner
+      shell: bash
+      run: |
+        python scanner/main.py
