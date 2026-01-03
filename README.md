@@ -75,3 +75,28 @@ Each finding is assigned a confidence score based on:
 - Exposure surface
 
 Findings below the confidence threshold are not reported.
+
+## Scan Modes
+
+Sentinel Secrets supports multiple scan modes to balance speed and coverage.
+
+### Pull Request Mode (default)
+- Scans only files and lines changed in the pull request
+- Designed for fast feedback during code review
+- Prevents noise from legacy secrets
+
+### Commit History Mode (optional)
+- Scans recent commit history for newly introduced secrets
+- Intended for scheduled or manual runs
+- Disabled by default to avoid CI overhead
+
+### Supported file types
+- Source code (Python, JavaScript, TypeScript)
+- Configuration files (YAML, JSON, ENV)
+- GitHub Actions workflows
+- Infrastructure as Code (Terraform)
+
+### File exclusions
+- Vendor or dependency directories
+- Binary files
+- Generated build artifacts
